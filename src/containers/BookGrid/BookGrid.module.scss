@@ -1,0 +1,9 @@
+@use "../../mixin";
+
+.grid {
+  background-color: gold;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
