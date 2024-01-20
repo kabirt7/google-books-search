@@ -7,24 +7,32 @@ import BookItem from "../../components/BookItem.jsx/BookItem";
 const BookGrid = () => {
   const [bookArr, setBookArr] = useState(null);
   const { searchTerm } = useContext(SearchTermContext);
+  const { formSubmitted } = useContext(SearchTermContext);
+  const { setFormSubmitted } = useContext(SearchTermContext);
 
   useEffect(() => {
-    getBooks({ searchTerm }).then((result) => {
-      setBookArr(result);
-    });
+    if (formSubmitted === true) {
+      getBooks({ searchTerm }).then((result) => {
+        setBookArr(result);
+        setFormSubmitted(false);
+      });
+    }
   }, [searchTerm]);
 
   return (
-    <div className={styles.grid}>
-      {bookArr &&
-        bookArr.map((book) => (
-          <BookItem
-            title={book.title}
-            authors={book.authors}
-            publishDate={book.publishDate}
-          />
-        ))}
-    </div>
+    <section className={styles.wrapper}>
+      <div className={styles.grid}>
+        {bookArr &&
+          bookArr.map((book) => (
+            <BookItem
+              title={book.title}
+              authors={book.authors}
+              publishDate={book.publishDate}
+              image={book.imageURL}
+            />
+          ))}
+      </div>
+    </section>
   );
 };
 

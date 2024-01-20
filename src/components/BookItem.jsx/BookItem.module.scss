@@ -1,5 +1,28 @@
 .book {
   color: rgb(96, 96, 96);
-  width: 200px;
   border: 1px solid blue;
+  flex-grow: 1;
+  position: relative;
+
+  img {
+    width: 200px;
+  }
+
+  &__modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+    padding: 10px;
+  }
+}
+
+.book:hover .book__modal {
+  display: block;
+}
+
+.visible {
+  display: block !important;
 }

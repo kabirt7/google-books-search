@@ -1,15 +1,21 @@
-import { useContext, useRef } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import { SearchTermContext } from "../../context/SearchTermContextProvider";
 
 const SearchForm = () => {
-  const { setSearchTerm } = useContext(SearchTermContext);
+  const { setSearchTerm, setFormSubmitted, formSubmitted } =
+    useContext(SearchTermContext);
+
   const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormSubmitted(true);
+  };
+
+  useEffect(() => {
     setSearchTerm(inputRef.current.value);
     console.log(inputRef.current.value);
-  };
+  }, [formSubmitted]);
 
   return (
     <form onSubmit={handleSubmit}>

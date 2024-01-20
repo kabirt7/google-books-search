@@ -1,9 +1,17 @@
 @use "../../mixin";
 
 .grid {
-  background-color: gold;
-  flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
+  flex-grow: 0;
+  padding: 15px;
+  flex-shrink: 5;
+}
+
+.wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 }
