@@ -5,13 +5,36 @@
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
+  align-items: center;
   flex-grow: 0;
   padding: 15px;
   flex-shrink: 5;
+  margin-left: 300px;
+  padding-top: 100px;
+
+  @include mixin.phone {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-left: 0px;
+  }
+  @include mixin.tablet {
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
+  @include mixin.laptop {
+    margin-left: 400px;
+  }
+  @include mixin.computer {
+    margin-left: 500px;
+  }
+  @include mixin.largeComputer {
+    margin-left: 600px;
+  }
 }
 
 .wrapper {
-  flex-grow: 1;
   display: flex;
   justify-content: center;
+  width: 100%;
 }

@@ -1,5 +1,8 @@
 import React, { useEffect, useContext, useRef } from "react";
 import { SearchTermContext } from "../../context/SearchTermContextProvider";
+import styles from "./SearchForm.module.scss";
+import myImage from "../../assets/magnifying-glass.png";
+import searchIcon from "../../assets/i.jpg";
 
 const SearchForm = () => {
   const { setSearchTerm, setFormSubmitted, formSubmitted } =
@@ -18,10 +21,15 @@ const SearchForm = () => {
   }, [formSubmitted]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="bookTerm">Book:</label>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input type="text" id="bookTerm" ref={inputRef} />
-      <button type="submit">Submit</button>
+      <div className={styles.form__buttons}>
+        <button type="submit">
+          {/* <img src={myImage} className={styles.form__icon} /> */}
+          Submit
+        </button>
+        <button id="moreInfoBtn">{/* <i>i</i> */}More Info</button>
+      </div>
     </form>
   );
 };

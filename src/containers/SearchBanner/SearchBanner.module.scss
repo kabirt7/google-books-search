@@ -1,10 +1,56 @@
 @use "../../mixin";
+@import "../../variables";
+@font-face {
+  font-family: "AutumnPixel";
+  src: url("../../assets/crystal-radio-kit.otf") format("truetype");
+}
 
-@include mixin.tablet {
-  .banana {
-    background-color: magenta;
-    width: 300px;
-    height: 100vh;
-    flex-shrink: 0;
+.banner {
+  background-color: $primary-color;
+  color: $text-color;
+  width: 300px;
+  height: 100vh;
+  flex-shrink: 0;
+  position: fixed;
+  font-family: "AutumnPixel", sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 3em;
+  justify-content: flex-start;
+  padding: 20px 0;
+  text-align: center;
+
+  &__info {
+    width: 80%;
+    font-size: 2rem;
+  }
+
+  @include mixin.laptop {
+    width: 400px;
+  }
+
+  @include mixin.computer {
+    width: 500px;
+    font-size: 4em;
+  }
+
+  @include mixin.largeComputer {
+    width: 600px;
+    font-size: 5em;
+  }
+
+  h1 {
+    width: 80%;
+    @include mixin.phone {
+      width: 100%;
+    }
+  }
+
+  @include mixin.phone {
+    width: 100vw;
+    position: static;
+    justify-content: space-evenly;
   }
 }

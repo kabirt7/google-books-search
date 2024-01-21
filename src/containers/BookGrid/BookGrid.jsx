@@ -29,6 +29,7 @@ const BookGrid = () => {
               authors={book.authors}
               publishDate={book.publishDate}
               image={book.imageURL}
+              desc={book.desc}
             />
           ))}
       </div>
