@@ -1,9 +1,20 @@
 import styles from "./BookItem.module.scss";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useContext } from "react";
+import { SearchTermContext } from "../../context/SearchTermContextProvider";
 
-const BookItem = ({ title, authors, publishDate, image, desc }) => {
-  console.log({ desc });
+const BookItem = ({ title, authors, publishDate, image, desc, book }) => {
   const imageRef = useRef(null);
+  // const { setBookModal } = useContext(SearchTermContext);
+
+  const { setBookModal } = useContext(SearchTermContext);
+  const { setIsModalShown } = useContext(SearchTermContext);
+
+  const modalLoad = () => {
+    alert("modal true");
+    setBookModal([{ book }]);
+    console.log({ book });
+    setIsModalShown(true);
+  };
 
   const handleImageLoad = () => {
     const imageHeight = imageRef.current.clientHeight;
@@ -20,7 +31,7 @@ const BookItem = ({ title, authors, publishDate, image, desc }) => {
 
   return (
     <>
-      <article className={styles.book}>
+      <article className={styles.book} onClick={() => modalLoad()}>
         <img src={image} ref={imageRef} onLoad={() => handleImageLoad()} />
         <div className={styles.book__modal}>
           <h3>{title}</h3>

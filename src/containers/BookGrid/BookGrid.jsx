@@ -2,13 +2,15 @@ import { useEffect, useContext, useState } from "react";
 import { getBooks } from "../../data/getBooksLogic";
 import { SearchTermContext } from "../../context/SearchTermContextProvider";
 import styles from "./BookGrid.module.scss";
-import BookItem from "../../components/BookItem.jsx/BookItem";
+import BookItem from "../../components/BookItem/BookItem";
+import BookModal from "../../components/BookModal/BookModal";
 
 const BookGrid = () => {
   const [bookArr, setBookArr] = useState(null);
   const { searchTerm } = useContext(SearchTermContext);
   const { formSubmitted } = useContext(SearchTermContext);
   const { setFormSubmitted } = useContext(SearchTermContext);
+  const { isModalShown } = useContext(SearchTermContext);
 
   useEffect(() => {
     if (formSubmitted === true) {
@@ -23,18 +25,21 @@ const BookGrid = () => {
     <section className={styles.wrapper}>
       <div className={styles.grid}>
         {bookArr &&
+          bookArr !== [] &&
           bookArr.map((book) => (
             <BookItem
+              book={book}
               title={book.title}
               authors={book.authors}
               publishDate={book.publishDate}
               image={book.imageURL}
               desc={book.desc}
+              key={book.id}
             />
           ))}
+        {isModalShown && <BookModal />}
       </div>
     </section>
   );
 };
-
 export default BookGrid;

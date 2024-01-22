@@ -12,7 +12,9 @@ const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    if (inputRef.current.value !== "") {
+      setFormSubmitted(true);
+    }
   };
 
   useEffect(() => {
