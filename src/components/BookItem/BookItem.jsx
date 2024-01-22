@@ -10,7 +10,6 @@ const BookItem = ({ title, authors, publishDate, image, desc, book }) => {
   const { setIsModalShown } = useContext(SearchTermContext);
 
   const modalLoad = () => {
-    alert("modal true");
     setBookModal([{ book }]);
     console.log({ book });
     setIsModalShown(true);

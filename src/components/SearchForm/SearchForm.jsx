@@ -14,6 +14,8 @@ const SearchForm = () => {
     e.preventDefault();
     if (inputRef.current.value !== "") {
       setFormSubmitted(true);
+    } else {
+      alert("please enter valid search term");
     }
   };
 
@@ -30,7 +32,6 @@ const SearchForm = () => {
           {/* <img src={myImage} className={styles.form__icon} /> */}
           Submit
         </button>
-        <button id="moreInfoBtn">{/* <i>i</i> */}More Info</button>
       </div>
     </form>
   );
