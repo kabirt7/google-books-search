@@ -1,10 +1,12 @@
 export const getBooks = async (obj) => {
-  // if (obj === "") {
-
   const response = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${obj.searchTerm}&key=AIzaSyBInnS-Dn8weow8Vi8v9LAagNoLWY9ZwEE`
   );
   const bookData = await response.json();
+
+  if (bookData.totalItems == 0) {
+    throw new Error("sorry no books found");
+  }
 
   const bookArray = bookData.items;
 

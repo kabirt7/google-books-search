@@ -14,10 +14,22 @@ const BookGrid = () => {
 
   useEffect(() => {
     if (formSubmitted === true) {
-      getBooks({ searchTerm }).then((result) => {
-        setBookArr(result);
-        setFormSubmitted(false);
-      });
+      getBooks({ searchTerm })
+        .then((result) => {
+          if (result) {
+            setBookArr(result);
+            console.log(result);
+          }
+          // } else {
+          //   throw new Error("Sorry, no books found");
+          // }
+        })
+        .catch((error) => {
+          alert(error.message);
+        })
+        .finally(() => {
+          setFormSubmitted(false);
+        });
     }
   }, [searchTerm]);
 
@@ -25,7 +37,6 @@ const BookGrid = () => {
     <section className={styles.wrapper}>
       <div className={styles.grid}>
         {bookArr &&
-          bookArr !== [] &&
           bookArr.map((book) => (
             <BookItem
               book={book}
