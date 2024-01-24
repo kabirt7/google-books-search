@@ -1,6 +1,7 @@
-export const getBooks = async (obj) => {
+export const getBooks = async (obj, inc) => {
+  if (inc.increment > 40) return;
   const response = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=${obj.searchTerm}&key=AIzaSyBInnS-Dn8weow8Vi8v9LAagNoLWY9ZwEE`
+    `https://www.googleapis.com/books/v1/volumes?q=${obj.searchTerm}&maxResults=${inc.increment}&key=AIzaSyBInnS-Dn8weow8Vi8v9LAagNoLWY9ZwEE`
   );
   const bookData = await response.json();
 
@@ -19,18 +20,18 @@ export const getBooks = async (obj) => {
 
     const authors = book.volumeInfo.authors
       ? book.volumeInfo.authors.join(", ")
-      : Math.random() * 1000000000;
+      : undefined;
 
     const description =
-      book.volumeInfo.description && book.volumeInfo.description.length > 200
-        ? `${book.volumeInfo.description.slice(0, 200)}...`
+      book.volumeInfo.description && book.volumeInfo.description.length > 100
+        ? `${book.volumeInfo.description.slice(0, 100)}...`
         : book.volumeInfo.description;
 
     const id =
       book.volumeInfo.industryIdentifiers &&
       book.volumeInfo.industryIdentifiers[0]
         ? book.volumeInfo.industryIdentifiers[0].identifier
-        : undefined;
+        : Math.random() * 1000000000;
 
     const cleanedBookInfo = {
       title: book.volumeInfo.title,
@@ -38,6 +39,7 @@ export const getBooks = async (obj) => {
       publishDate: book.volumeInfo.publishedDate,
       imageURL: image,
       desc: description,
+      descFull: book.volumeInfo.description,
       id: id,
       pages: book.volumeInfo.pageCount,
       publisher: book.volumeInfo.publisher,

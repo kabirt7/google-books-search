@@ -33,10 +33,12 @@ const BookItem = ({ title, authors, publishDate, image, desc, book }) => {
       <article className={styles.book} onClick={() => modalLoad()}>
         <img src={image} ref={imageRef} onLoad={() => handleImageLoad()} />
         <div className={styles.book__modal}>
-          <h3>{title}</h3>
-          <p>{authors}</p>
-          <p>{desc}</p>
-          <p>{publishDate}</p>
+          <main className={styles.book__text}>
+            <h3>{title}</h3>
+            <p>{authors}</p>
+            <p>{desc}</p>
+            <p>Published: {publishDate}</p>
+          </main>
         </div>
       </article>
     </>

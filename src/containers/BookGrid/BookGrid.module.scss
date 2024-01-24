@@ -31,10 +31,46 @@
   @include mixin.largeComputer {
     margin-left: 600px;
   }
+
+  &__button {
+    display: none;
+    position: relative;
+    align-self: center;
+    margin-bottom: 1em;
+    width: auto;
+    border-radius: 50px;
+    padding: 10px;
+
+    @include mixin.phone {
+      margin-left: 0;
+    }
+
+    @include mixin.tablet {
+      margin-left: 300px;
+    }
+
+    @include mixin.laptop {
+      margin-left: 400px;
+    }
+    @include mixin.computer {
+      margin-left: 500px;
+    }
+    @include mixin.largeComputer {
+      margin-left: 600px;
+    }
+
+    &__displayed {
+      display: block;
+    }
+    &__hidden {
+      display: none;
+    }
+  }
 }
 
 .wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
+  flex-direction: column;
 }

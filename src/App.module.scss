@@ -1,6 +1,6 @@
 @use "./mixin";
 
-main {
+.mainContent {
   display: flex;
   width: 100vw;
   @include mixin.phone {

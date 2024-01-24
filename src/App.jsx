@@ -1,15 +1,22 @@
-import "./App.scss";
+import styles from "./App.module.scss";
+import InfoModal from "./components/InfoModal/InfoModal";
 import BookGrid from "./containers/BookGrid/BookGrid";
 import SearchBanner from "./containers/SearchBanner/SearchBanner";
 import SearchTermContextProvider from "./context/SearchTermContextProvider";
 
+import { useContext } from "react";
+import Modals from "./containers/Modals/Modals";
+
 function App() {
   return (
     <SearchTermContextProvider>
-      <main>
-        <SearchBanner />
-        <BookGrid />
-      </main>
+      <section>
+        <main className={styles.mainContent}>
+          <SearchBanner />
+          <BookGrid />
+        </main>
+        <Modals />
+      </section>
     </SearchTermContextProvider>
   );
 }

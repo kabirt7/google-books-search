@@ -1,7 +1,7 @@
 @use "../../mixin";
 
 .book {
-  color: black;
+  color: rgb(0, 0, 0);
   background-color: #ffffff; /* Set your background color */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -54,6 +54,15 @@
     background-color: rgb(255, 179, 0, 0.5);
     height: 100%;
     width: 100%;
+  }
+
+  &__text {
+    width: 80%;
+    height: 100%;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
